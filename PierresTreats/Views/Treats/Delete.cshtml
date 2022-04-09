@@ -1,5 +1,4 @@
 @model PierresTreats.Models.Treat
-@* @model ToDoList.Models.Item *@
 
 @{
 	ViewData["Title"] = "Delete Treat";
@@ -8,6 +7,8 @@
 }
 
 <h2>Are you sure you want to delete this?</h2>
+
+<hr>
 
 @Html.DisplayNameFor(model => model.TreatDescription): @Html.DisplayFor(model => model.TreatDescription)
 @using (Html.BeginForm())

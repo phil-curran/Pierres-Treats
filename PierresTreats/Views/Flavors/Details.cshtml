@@ -1,5 +1,4 @@
 @model PierresTreats.Models.Flavor
-@* @model ToDoList.Models.Category; *@
 
 @{
 	ViewData["Title"] = "Add Flavor";
@@ -8,7 +7,9 @@
 }
 
 <h2>Category Details</h2>
+
 <hr />
+
 <h3>@Html.DisplayNameFor(model => model.FlavorName): @Html.DisplayFor(model => model.FlavorName)</h3>
 
 @if(@Model.JoinEntities.Count == 0)
