@@ -1,4 +1,5 @@
 @model PierresTreats.Models.Treat
+@* @model ToDoList.Models.Item *@
 
 @{
 	ViewData["Title"] = "Treat Details";
@@ -6,4 +7,32 @@
 	Layout = "_Layout";
 }
 
-<h2>title</h2>
+<h2>Treat Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.TreatDescription): @Html.DisplayFor(model => model.TreatDescription)</h3>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+	<p>This item does not belong to any categories</p>
+}
+else
+{
+	<h4>Categories the item belongs to:</h4>
+	<ul>
+		@foreach(var join in Model.JoinEntities)
+		{
+			<li>@join.Flavor.FlavorName</li>
+			@using (Html.BeginForm("DeleteFlavor", "Treats"))
+			{
+				@Html.Hidden("joinId", @join.TreatFlavorId)
+				<input type="submit" value="Delete"/>
+			}
+		}
+	</ul>
+}
+
+<p>@Html.ActionLink("Add a Category", "AddFlavor", new { id = Model.TreatId })</p>
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Edit Item", "Edit", new { id = Model.TreatId })</p>
+<p>@Html.ActionLink("Delete Item", "Delete", new { id = Model.TreatId })</p>

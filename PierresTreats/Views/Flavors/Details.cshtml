@@ -1,4 +1,5 @@
 @model PierresTreats.Models.Flavor
+@* @model ToDoList.Models.Category; *@
 
 @{
 	ViewData["Title"] = "Add Flavor";
@@ -6,4 +7,25 @@
 	Layout = "_Layout";
 }
 
-<h2>title</h2>
+<h2>Category Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.FlavorName): @Html.DisplayFor(model => model.FlavorName)</h3>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>This category does not contain any treats</p>
+}
+else
+{
+  <h4>Treats the flavor contains:</h4>
+  <ul>
+  @foreach(var join in Model.JoinEntities)
+  {
+    <li>@join.Treat.TreatDescription</li>
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Back to categories", "Index")</p>
+<p>@Html.ActionLink("Edit Category", "Edit", new { id = Model.FlavorId })</p>
+<p>@Html.ActionLink("Delete Category", "Delete", new { id = Model.FlavorId })</p>

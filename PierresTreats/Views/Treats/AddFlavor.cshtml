@@ -1,4 +1,5 @@
 @model PierresTreats.Models.Treat
+@* @model ToDoList.Models.Item *@
 
 @{
 	ViewData["Title"] = "Add Treat";
@@ -6,4 +7,18 @@
 	Layout = "_Layout";
 }
 
-<h2>title</h2>
+<h2>Add a flavor</h2>
+
+<h4>Add a flavor to this treat: @Html.DisplayFor(model => model.TreatDescription)</h4>
+
+@using (Html.BeginForm())
+{
+	@Html.HiddenFor(model => model.TreatId)
+
+	@Html.Label("Select flavor")
+	@Html.DropDownList("FlavorId")
+
+	<input type="submit" value="Save" />
+}	
+
+<p>@Html.ActionLink("Back to list", "Index")</p>

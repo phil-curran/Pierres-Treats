@@ -1,4 +1,5 @@
 @model PierresTreats.Models.Treat
+@* @model ToDoList.Models.Item *@
 
 @{
 	ViewData["Title"] = "Delete Treat";
@@ -6,4 +7,11 @@
 	Layout = "_Layout";
 }
 
-<h2>title</h2>
+<h2>Are you sure you want to delete this?</h2>
+
+@Html.DisplayNameFor(model => model.TreatDescription): @Html.DisplayFor(model => model.TreatDescription)
+@using (Html.BeginForm())
+{
+	<input type="submit" value="Delete" />
+}
+@Html.ActionLink("Back to List", "Index")

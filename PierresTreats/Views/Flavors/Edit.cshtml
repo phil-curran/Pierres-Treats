@@ -1,4 +1,5 @@
 @model PierresTreats.Models.Flavor
+@* @model ToDoList.Models.Category *@
 
 @{
 	ViewData["Title"] = "Add Flavor";
@@ -6,4 +7,18 @@
 	Layout = "_Layout";
 }
 
-<h2>title</h2>
+<h2>Edit</h2>
+<hr>
+
+<h4>Edit this category: @Html.DisplayFor(model => model.FlavorName)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.FlavorId)
+
+  @Html.LabelFor(model => model.FlavorName)
+  @Html.EditorFor(model => model.FlavorName)
+
+  <input type="submit" value="Save" />
+}
+<p>@Html.ActionLink("Back to list", "Index")</p>

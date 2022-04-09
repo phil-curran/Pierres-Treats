@@ -1,4 +1,5 @@
-@model dynamic
+@* @model dynamic *@
+@model PierresTreats.Models.Flavor
 
 @{
 	ViewData["Title"] = "Add Flavor";
@@ -6,6 +7,12 @@
 	Layout = "_Layout";
 }
 
-<h2>title</h2>
-
+<h4>Add a new flavor</h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.FlavorName)
+  @Html.TextBoxFor(model => model.FlavorName)
+  <input type="submit" value="Add new flavor" />
+}
+<p>@Html.ActionLink("Show all flavors", "Index")</p>
 

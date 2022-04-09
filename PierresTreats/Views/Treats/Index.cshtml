@@ -1,4 +1,6 @@
 @model System.Collections.Generic.List<PierresTreats.Models.Treat>
+@* @using ToDoList.Models; *@
+@* @model List<ToDoList.Models.Item>; *@
 
 @{
 	ViewData["Title"] = "Add Treat";
@@ -6,4 +8,16 @@
 	Layout = "_Layout";
 }
 
-<h2>title</h2>
+<h1>Treats</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No treats have been added yet!</h3>
+} 
+
+@foreach (Treat treat in Model)
+{
+  <li>@Html.ActionLink($"{treat.TreatDescription}", "Details", new { id = treat.TreatId })</li>
+}
+
+<p>@Html.ActionLink("Add new item", "Create")</p>
