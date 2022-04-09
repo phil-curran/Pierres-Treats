@@ -72,7 +72,7 @@ namespace PierresTreats.Controllers
       return RedirectToAction("Index");
     }
 
-    public ActionResult AddCategory(int id)
+    public ActionResult AddFlavor(int id)
     {
       var thisItem = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
       ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name");
@@ -80,7 +80,7 @@ namespace PierresTreats.Controllers
     }
 
     [HttpPost]
-    public ActionResult AddCategory(Treat treat, int flavorId)
+    public ActionResult AddFlavor(Treat treat, int flavorId)
     {
       if (flavorId != 0)
       {
