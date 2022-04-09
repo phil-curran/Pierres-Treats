@@ -15,4 +15,19 @@
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.0-alpha.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Items\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Items\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Items\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Treats\AddCategory.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Treats\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Treats\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Treats\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Treats\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Treats\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Items\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Items\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Items\Index.cshtml" />
+  </ItemGroup>
+
 </Project>
