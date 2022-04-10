@@ -1,2 +1,12 @@
-@Html.ActionLink("Register", "Register", "Account", null, new { @class = "button is-info" })
-@Html.ActionLink("Login", "Login", "Account", null, new { @class = "button is-primary" })
+@if (User.Identity.IsAuthenticated)
+{
+	@using (Html.BeginForm("LogOut", "Account"))
+	{
+		<input type="submit" class="button is-danger" value="Log out" />
+	}
+}
+else
+{
+	@Html.ActionLink("Register", "Register", "Account", null, new { @class = "button is-info" })
+	@Html.ActionLink("Login", "Login", "Account", null, new { @class = "button is-primary" })
+}

@@ -35,6 +35,10 @@ namespace PierresTreats
       
       services.Configure<IdentityOptions>(options =>
       {
+        // Sign-in settings
+        options.SignIn.RequireConfirmedEmail = false;
+        options.User.RequireUniqueEmail = false;
+        // Password settings
         options.Password.RequireDigit = false;
         options.Password.RequiredLength = 0;
         options.Password.RequireLowercase = false;
@@ -48,6 +52,7 @@ namespace PierresTreats
     {
       app.UseDeveloperExceptionPage();
       app.UseRouting();
+      app.UseAuthentication();
       app.UseAuthorization();
       app.UseEndpoints(routes =>
       {

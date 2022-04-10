@@ -9,8 +9,8 @@ using PierresTreats.Models;
 namespace PierresTreats.Migrations
 {
     [DbContext(typeof(PierresTreatsContext))]
-    [Migration("20220410050838_Authorization")]
-    partial class Authorization
+    [Migration("20220410051623_ResetForAuthorization")]
+    partial class ResetForAuthorization
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

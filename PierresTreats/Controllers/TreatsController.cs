@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using PierresTreats.Models;
 using System.Linq;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
@@ -10,11 +11,11 @@ using System.Security.Claims;
 
 namespace PierresTreats.Controllers
 {
-  [Authorize] //new line
+  [Authorize]
   public class TreatsController : Controller
   {
     private readonly PierresTreatsContext _db;
-    private readonly UserManager<ApplicationUser> _userManager; //new line
+    private readonly UserManager<ApplicationUser> _userManager;
     public TreatsController(UserManager<ApplicationUser> userManager, PierresTreatsContext db)
     {
       _userManager = userManager;
