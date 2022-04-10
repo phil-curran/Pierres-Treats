@@ -1,12 +1,15 @@
 @model System.Collections.Generic.List<PierresTreats.Models.Treat>
 
+@using PierresTreats.Models;
+@* @model IEnumerable<PierresTreats.Models.Treat> *@
+
 @{
 	ViewData["Title"] = "Add Treat";
 	ViewData["Footer"] = "Views / Treats / Index";
 	Layout = "_Layout";
 }
 
-<h2 class="is-size-2 has-text-justified">Treats</h2>
+<h2 class="is-size-2 has-text-justified">Treats for @User.Identity?.Name</h2>
 
 <hr>
 
@@ -33,6 +36,7 @@
   </thead>
   <tbody>
   
+  @* ReSharper disable once SuggestVarOrType_SimpleTypes *@
   @foreach (Treat treat in Model)
   {
     <tr>
