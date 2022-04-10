@@ -2,17 +2,25 @@
 
 @{
 	ViewData["Title"] = "Delete Treat";
-	ViewData["Footer"] = "Views / Treats / Delete Treat";
+	ViewData["Footer"] = "Views / Treats / Delete";
 	Layout = "_Layout";
 }
 
-<h2>Are you sure you want to delete this?</h2>
+<h2 class="is-size-2 has-text-justified">Are you sure you want to delete this?</h2>
 
 <hr>
+
+<nav class="breadcrumb" aria-label="breadcrumbs">
+	<ul>
+		<li><a href="/">Home</a></li>
+		<li><a href="/Treats">Treats</a></li>
+		<li class="is-active"><a href="/Flavors" aria-current="page">Delete Treat</a></li>
+	</ul>
+</nav>
 
 @Html.DisplayNameFor(model => model.TreatDescription): @Html.DisplayFor(model => model.TreatDescription)
 @using (Html.BeginForm())
 {
-	<input type="submit" value="Delete" />
+	<input class="button is-danger" type="submit" value="Delete" />
 }
 @Html.ActionLink("Back to List", "Index")

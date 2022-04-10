@@ -2,15 +2,23 @@
 
 @{
 	ViewData["Title"] = "Treat Details";
-	ViewData["Footer"] = "Views / Treats / Treat Details";
+	ViewData["Footer"] = "Views / Treats / Details";
 	Layout = "_Layout";
 }
 
-<h2>Treat Details</h2>
+<h2 class="is-size-2 has-text-justified">Treat Details</h2>
 
 <hr />
 
-<h3>@Html.DisplayNameFor(model => model.TreatDescription): @Html.DisplayFor(model => model.TreatDescription)</h3>
+<nav class="breadcrumb" aria-label="breadcrumbs">
+	<ul>
+		<li><a href="/">Home</a></li>
+		<li><a href="/Treats">Treats</a></li>
+		<li class="is-active"><a href="/Flavors" aria-current="page">Treat Details</a></li>
+	</ul>
+</nav>
+
+<h3>@Html.Label("Treat Description"):  @Html.DisplayFor(model => model.TreatDescription)</h3>
 
 @if(@Model.JoinEntities.Count == 0)
 {
@@ -18,7 +26,7 @@
 }
 else
 {
-	<h4>Categories the item belongs to:</h4>
+	<h4>Flavor Categories:</h4>
 	<ul>
 		@foreach(var join in Model.JoinEntities)
 		{
@@ -26,13 +34,15 @@ else
 			@using (Html.BeginForm("DeleteFlavor", "Treats"))
 			{
 				@Html.Hidden("joinId", @join.TreatFlavorId)
-				<input type="submit" value="Delete"/>
+				<input class="button is-danger" type="submit" value="Remove Flavor"/>
 			}
 		}
 	</ul>
 }
 
-<p>@Html.ActionLink("Add a Category", "AddFlavor", new { id = Model.TreatId })</p>
+<p>
+  @Html.ActionLink("+ Add flavor", "Create", "Treats", null, new { @class = "button is-info" })
+</p>
 
 <p>@Html.ActionLink("Back to list", "Index")</p>
 <p>@Html.ActionLink("Edit Item", "Edit", new { id = Model.TreatId })</p>

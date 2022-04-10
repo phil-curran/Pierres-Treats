@@ -6,14 +6,24 @@
 	Layout = "_Layout";
 }
 
-<h2>Add a new flavor</h2>
+<h2 class="is-size-2 has-text-justified">Add a new flavor</h2>
 
 <hr>
+
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/Flavors">Flavors</a></li>
+	  <li class="is-active"><a href="#" aria-current="page">Create a flavor</a></li>
+  </ul>
+</nav>
 
 @using (Html.BeginForm())
 {
   @Html.LabelFor(model => model.FlavorName)
   @Html.TextBoxFor(model => model.FlavorName)
+	@Html.LabelFor(model => model.FlavorDescription)
+	@Html.TextBoxFor(model => model.FlavorDescription)
   <input type="submit" value="Add new flavor" />
 }
 <p>@Html.ActionLink("Show all flavors", "Index")</p>

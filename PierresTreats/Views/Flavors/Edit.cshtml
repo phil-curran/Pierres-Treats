@@ -6,9 +6,17 @@
 	Layout = "_Layout";
 }
 
-<h2>Edit</h2>
+<h2 class="is-size-2 has-text-justified">Edit Flavor</h2>
 
 <hr>
+
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/Flavors">Flavors</a></li>
+	  <li class="is-active"><a href="#" aria-current="page">Edit flavor</a></li>
+  </ul>
+</nav>
 
 <h4>Edit this category: @Html.DisplayFor(model => model.FlavorName)</h4>
 
@@ -18,6 +26,9 @@
 
   @Html.LabelFor(model => model.FlavorName)
   @Html.EditorFor(model => model.FlavorName)
+  
+	@Html.LabelFor(model => model.FlavorDescription)
+	@Html.EditorFor(model => model.FlavorDescription)
 
   <input type="submit" value="Save" />
 }

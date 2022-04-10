@@ -2,20 +2,31 @@
 
 @{
 	ViewData["Title"] = "Create Treat";
-	ViewData["Footer"] = "Views / Treats / Create Treat";
+	ViewData["Footer"] = "Views / Treats / Create";
 	Layout = "_Layout";
 }
 
-<h2>Add a new treat</h2>
+<h2 class="is-size-2 has-text-justified">Add a new treat</h2>
 
 <hr>
 
+<nav class="breadcrumb" aria-label="breadcrumbs">
+	<ul>
+		<li><a href="/">Home</a></li>
+		<li><a href="/Treats">Treats</a></li>
+		<li class="is-active"><a href="/Flavors" aria-current="page">Add Treat</a></li>
+	</ul>
+</nav>
+
 @using (Html.BeginForm())
 {
-	@Html.LabelFor(model => model.TreatDescription)
+	@Html.Label("Treat Name: ")
+	@Html.TextBoxFor(model => model.TreatName)
+	@Html.Label("Treat Description: ")
 	@Html.TextBoxFor(model => model.TreatDescription)
 	@Html.Label("Select flavor")
 	@Html.DropDownList("FlavorId")
 	<input type="submit" value="Add new treat" class="button is-primary" />
 }
-<p>@Html.ActionLink("Show all items", "Index")</p>
+<p>@Html.ActionLink("Show all treats", "Index")</p>
+

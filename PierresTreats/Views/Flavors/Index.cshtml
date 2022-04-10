@@ -6,21 +6,44 @@
 	Layout = "_Layout";
 }
 
-<h2>Flavors</h2>
+<h2 class="is-size-2 has-text-justified">Flavors</h2>
 
 <hr>
+
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li class="is-active"><a href="/Flavors" aria-current="page">Flavor List</a></li>
+  </ul>
+</nav>
 
 @if (@Model.Count == 0)
 {
 	<h3>No flavors have been added yet!</h3>
 } 
 
-<ul>
-	@foreach(Flavor flavor in Model)
-	{
-		<li>@Html.ActionLink($"{flavor.FlavorName}", "Details", new { id = flavor.FlavorId })</li>
-	}
-</ul>
+<table class="table is-bordered is-striped is-fullwidth">
+  <thead>
+    <tr>
+      <th> Flavor Id </th>
+      <th> Flavor Name </th>      
+      <th> Flavor Description </th>      
+      <th>-</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+@foreach (Flavor flavor in Model){
+  <tr>
+	  <td>@flavor.FlavorId</td>
+	  <td>@Html.ActionLink($"{flavor.FlavorName}", "Details", new { id = flavor.FlavorId })</td>
+	  <td>@flavor.FlavorDescription</td>
+	  <td>-</td>
+  </tr>
+}
+  </tbody>
+</table>
 
-<p>@Html.ActionLink("Add new category", "Create")</p>
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
+<p>
+  @Html.ActionLink("+ Add flavor", "Create", "Flavors", null, new { @class = "button is-info" })
+</p>
