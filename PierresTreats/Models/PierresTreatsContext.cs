@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using PierresTreats.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace PierresTreats.Models
 {
-  public class PierresTreatsContext : DbContext
+  public class PierresTreatsContext : IdentityDbContext<ApplicationUser>
   {
     public DbSet<Treat> Treats { get; set; }
     public DbSet<Flavor> Flavors { get; set; }

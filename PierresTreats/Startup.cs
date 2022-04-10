@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PierresTreats.Models;
-using System.IO;
+using Microsoft.AspNetCore.Identity;
 
 namespace PierresTreats
 {
@@ -28,21 +28,22 @@ namespace PierresTreats
       services.AddEntityFrameworkMySql()
         .AddDbContext<PierresTreatsContext>(options => options
         .UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
+      
+      services.AddIdentity<ApplicationUser, IdentityRole>()
+          .AddEntityFrameworkStores<PierresTreatsContext>()
+          .AddDefaultTokenProviders();
     }
 
     public void Configure(IApplicationBuilder app)
     {
       app.UseDeveloperExceptionPage();
-      
       app.UseRouting();
-
+      app.UseAuthorization();
       app.UseEndpoints(routes =>
       {
         routes.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
       });
-
       app.UseStaticFiles();
-
       app.Run(async (context) =>
       {
         await context.Response.WriteAsync("Hello World!");
