@@ -31,7 +31,7 @@
     <th> Treat Id </th>
     <th> Treat Name </th>      
     <th> Treat Description </th>      
-    <th>-</th>
+    <th> Flavors </th>
   </tr>
   </thead>
   <tbody>
@@ -43,7 +43,12 @@
       <td>@treat.TreatId</td>
       <td>@Html.ActionLink($"{treat.TreatName}", "Details", new { id = treat.TreatId })</td>
       <td>@treat.TreatDescription</td>
-      <td>-</td>
+      <td>
+        @foreach(var join in @treat.JoinEntities)
+        {
+          <li style="list-style-type: none;">@join.Flavor.FlavorName</li>
+        }
+      </td>
     </tr>
   }
   </tbody>
